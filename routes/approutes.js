@@ -12,5 +12,33 @@ router.route('/tasks/:taskId')
 .put(todoList.update_a_task)
 .delete(todoList.delete_a_task);
 
+router.route('/pepito')
+.get((req,res) => {
+    req.session.vistos = req.session.vistos ? req.session.vistos + 1 : 1;
+    res.json({result: req.session.vistos})
+});
+
+
+router.route('/pepasa')
+.get((req,res) => {
+    req.session.vistos = req.session.vistos ? req.session.vistos + 1 : 1;
+    res.json({result: req.session.vistos, xd:'xdxd'})
+});
+
+router.route('/opciones')
+.post(todoList.list_all_opciones);
+
+router.route('/login')
+.post(todoList.validar_login);
+
+router.route('/recuperar_sesion')
+.get(todoList.recuperar_sesion);
+
+router.route('/cerrar_sesion')
+.get(todoList.cerrar_sesion);
+
+
+
+
 module.exports = router;
       
